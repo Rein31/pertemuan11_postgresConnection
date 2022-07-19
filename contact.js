@@ -21,22 +21,6 @@ const checkDuplicate = async (name) => {
     }else{
       return true;
     }
-  
-
-}
-
-// validate dir folder path
-function dirPathValidator(dirPath){
-  if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath);
-  }
-}
-
-// validate dir data path
-function dataPathValidator(dataPath){
-  if (!fs.existsSync(dataPath)) {
-      fs.writeFileSync(dataPath,'[]','utf-8');
-  }
 }
 
 // function for validate email
@@ -104,17 +88,6 @@ const updateContact = async (oldName,newName,mobile,email) => {
   } catch (err) {
     console.log(err.message);
   }
-}
-
-// overwrite save file contact to JSON
-const overWriteFileContact = (contact) =>{
-  const dirPath = "./data";
-  const dataPath = "./data/contacts.json";
-  dirPathValidator(dirPath);
-  dataPathValidator(dataPath);
-  const contacts = contact;
-  fs.writeFileSync('data/contacts.json',JSON.stringify(contacts));
-
 }
 
 // add new contact

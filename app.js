@@ -127,7 +127,7 @@ app.post('/contact/delete', async (req,res) => {
 
     if (!findCont) {
         res.status(404)
-        res.send("404 Page Not Found!")
+        res.send(`${name} contact not found!`)
     }else{
         await contact.deleteContact(name)
         res.redirect('/contact')
@@ -142,7 +142,7 @@ app.get("/contact/:idName", async (req, res) => {
     // console.log(detailCont);
     if (!detailCont) {
         res.status(404)
-        res.send("404 Page Not Found!")
+        res.send(`${req.params.idName} contact not found!`)
     }else{
         res.render('detailCont', {
             title : "Detail Contact",
