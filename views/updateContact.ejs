@@ -1,0 +1,87 @@
+<div class="container">
+    <% if (error !=='' ) { %>
+        <% error.forEach(element=> { %>
+            <div class="alert alert-warning" role="alert">
+                <%= element.msg %>
+            </div>
+            <% }) %>
+                <% } %>
+
+
+                    <form class="row g-3" action="/contact/update" method="post">
+                        <div class="row mt-5">
+                            <h2>Update Contact</h2>
+                            <input type="hidden" name="oldName" value="<%= oldName %>">
+                            <div class="col-4">
+                                <label for="inputName" class="form-label">Name </label>
+                                <% if (oldContact !==null) { %>
+                                    <input name="name" type="text" class="form-control" id="inputName"
+                                        placeholder="Jane Doe" value="<%= oldContact.name %>" required>
+                                    <% }else{ %>
+                                        <input name="name" type="text" class="form-control" id="inputName"
+                                            placeholder="Jane Doe" required>
+                                        <% } %>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="inputEmail" class="form-label">Email</label>
+                                <% if (oldContact !==null) { %>
+                                    <input name="email" type="email" class="form-control" id="inputEmail"
+                                        placeholder="xxx@gmail.com" value="<%= oldContact.email %>">
+                                    <% }else{ %>
+                                        <input name="email" type="email" class="form-control" id="inputEmail"
+                                            placeholder="xxx@gmail.com">
+                                        <% } %>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="inputMobile" class="form-label">Mobile Number</label>
+                                <% if (oldContact !==null) { %>
+                                    <input name="mobile" type="number" class="form-control" id="inputMobile"
+                                        placeholder="0822xxxxxxxx" value="<%= oldContact.mobile %>" required>
+                                    <% }else{ %>
+                                        <input name="mobile" type="number" class="form-control" id="inputMobile"
+                                            placeholder="0822xxxxxxxx" required>
+                                        <% } %>
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#updateModal">
+                                Update
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>Are you sure want to update <%= oldName %> contact?</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-success">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+</div>
+</div>

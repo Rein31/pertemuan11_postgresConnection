@@ -1,0 +1,51 @@
+<div class="mt-5 ms-5">
+  <div class="card border-secondary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Detail Contact </div>
+    <div class="card-body text-secondary">
+      <h5 class="card-title">
+        <%= cont.name %>
+      </h5>
+      <p class="card-text">
+        <%= cont.mobile %>
+      </p>
+      <p class="card-text">
+        <%= cont.email %>
+      </p>
+
+      <a href="/contact"><button type="button" class="btn btn-primary">Back</button></a>
+
+
+      <form action="/contact/update/<%= cont.name %>" method="get" class="d-inline">
+        <input type="hidden" name="idName" value="<%= cont.name %>">
+        <button type="submit" class="btn btn-success">update</button>
+      </form>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        delete
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5>Are you sure want to delete <%= cont.name %> contact?</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <form action="/contact/delete" method="post" class="d-inline">
+                <input type="hidden" name="idName" value="<%= cont.name %>">
+                <button type="submit" class="btn btn-danger">delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

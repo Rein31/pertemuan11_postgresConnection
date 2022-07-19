@@ -1,0 +1,50 @@
+<div class="container">
+    <% if (error !== '') { %>
+        <% error.forEach(element => { %>
+            <div class="alert alert-warning" role="alert">
+                <%= element.msg %> 
+            </div>
+        <% }) %> 
+    <% } %>
+    
+    
+    <form class="row g-3" action="/contact" method="post">
+        <div class="row mt-5">
+            <h2>Add Contact</h2>
+            <div class="col-4">
+                <label for="inputName" class="form-label">Name </label>
+                <% if (oldContact !== null) { %>
+                    <input name="name" type="text" class="form-control" id="inputName" placeholder="Jane Doe" value="<%= oldContact.name %>" required>
+                <% }else{ %>
+                    <input name="name" type="text" class="form-control" id="inputName" placeholder="Jane Doe" required>
+                <% } %> 
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label for="inputEmail" class="form-label">Email</label>
+                <% if (oldContact !== null) { %>
+                    <input name="email" type="email" class="form-control" id="inputEmail" placeholder="xxx@gmail.com" value="<%= oldContact.email %>" required>
+                <% }else{ %>
+                    <input name="email" type="email" class="form-control" id="inputEmail" placeholder="xxx@gmail.com" required>
+                <% } %> 
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label for="inputMobile" class="form-label">Mobile Number</label>
+                <% if (oldContact !== null) { %>
+                    <input name="mobile" type="number" class="form-control" id="inputMobile" placeholder="0822xxxxxxxx" value="<%= oldContact.mobile %>" required>
+                <% }else{ %>
+                    <input name="mobile" type="number" class="form-control" id="inputMobile" placeholder="0822xxxxxxxx">
+                <% } %> 
+                
+            </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Add Contact</button>
+        </div>
+      </form>
+</div>
